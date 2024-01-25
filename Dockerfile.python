@@ -5,9 +5,9 @@ RUN apt-get update && apt-get install -y libssl-dev
 COPY app/requirements.txt /app/
 RUN pip install --upgrade pip
 RUN pip install -r /app/requirements.txt
-
+WORKDIR /app
 # Копируем исходный код приложения
-COPY . /app
+COPY ./app /app
 EXPOSE 3425
 # Запускаем Python-скрипт
-CMD ["python", "/app/app/main.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3425"]
