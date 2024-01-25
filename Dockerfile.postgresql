@@ -1,0 +1,8 @@
+# Используем официальный образ PostgreSQL
+FROM postgres:latest
+
+# Копируем файл инициализации базы данных
+COPY init.sql /docker-entrypoint-initdb.d/
+
+
+EXPOSE 5432

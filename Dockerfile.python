@@ -1,0 +1,13 @@
+# Используем официальный образ Python
+FROM python:latest
+RUN apt-get update && apt-get install -y libssl-dev
+# Устанавливаем зависимости приложения
+COPY app/requirements.txt /app/
+RUN pip install --upgrade pip
+RUN pip install -r /app/requirements.txt
+
+# Копируем исходный код приложения
+COPY . /app
+EXPOSE 3425
+# Запускаем Python-скрипт
+CMD ["python", "/app/app/main.py"]
