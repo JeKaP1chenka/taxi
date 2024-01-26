@@ -10,6 +10,8 @@ CREATE DATABASE taxi
 
 -- DROP TABLE IF EXISTS public."Users";
 
+\connect taxi;
+
 CREATE TABLE IF NOT EXISTS public."Users"
 (
     "UserID" bigint NOT NULL,
