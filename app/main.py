@@ -6,7 +6,7 @@ import secrets
 
 MAX_LENGTH = 256
 
-connection = psycopg2.connect(dbname="taxi", host="172.17.0.2", user="postgres", password="sql@sql", port="5432")
+connection = psycopg2.connect(dbname="taxi", host="postgres", user="postgres", password="sql@sql", port="5432")
 connection.autocommit = True
 cursor = connection.cursor()
 

@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  postgres:
+    build:
+      context: ./sql
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_PASSWORD: sql@sql
+    ports:
+      - "5433:5432"
+    container_name: postgres_instance
+
+  python_app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "8888:3425"
+    container_name: python_app_instance
+    depends_on:
+      - postgres
